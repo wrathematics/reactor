@@ -37,10 +37,10 @@ These are not real questions, but they are real answers.
 
 **Q:** Why not just check from R?
 
-**A:** This is a fine way to do business.  You can use something like the assertthat package (or roll your own).  One problem with this is that checking from R is actually *significantly* slower than checking from C.  Currently it's very trendy in the R community to compare packages with microbenchmarks.  At best these people don't know what they're doing, and at worst they're being outright dishonest.  But reactor will improve performance on such benchmarks.  Also, sometimes it's just a lot more convenient to do this stuff in C believe it or not.
+**A:** This is a fine way to do business.  You can use something like the **assertthat** package (or roll your own).  One problem with this is that checking from R is actually *significantly* slower than checking from C.  Currently it's very trendy in the R community to compare packages with microbenchmarks.  At best these people don't know what they're doing, and at worst they're being outright dishonest.  But reactor will improve performance on such benchmarks.  Also, sometimes it's just a lot more convenient to do this stuff in C believe it or not.
 
 
 
 ## License
 
-reactor is licensed under the "0-clause" BSD.  Basically I don't care how or why you use it, but it comes with no warranty of any kind.
+**reactor** is licensed under the "0-clause" BSD.  Basically I don't care how or why you use it, but it comes with no warranty of any kind.
