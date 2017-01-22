@@ -59,7 +59,6 @@ static inline int is_inty(SEXP x)
 {
   switch (TYPEOF(x))
   {
-    case LGLSXP:
     case INTSXP:
       return 1;
     case REALSXP:
@@ -83,6 +82,20 @@ static inline int is_negative(SEXP x)
       return INTEGER(x)[0] < 0;
     case REALSXP:
       return REAL(x)[0] < 0;
+    
+    default:
+      return 0;
+  }
+}
+
+static inline int is_zero(SEXP x)
+{
+  switch (TYPEOF(x))
+  {
+    case INTSXP:
+      return INTEGER(x)[0] == 0;
+    case REALSXP:
+      return REAL(x)[0] == 0.0;
     
     default:
       return 0;
@@ -135,8 +148,17 @@ static inline int is_num(SEXP x)
   if (!is_str(REACTOR_FIRST(__VA_ARGS__)) || is_annoying(REACTOR_FIRST(__VA_ARGS__))){ \
     REACTOR_ERRMSG("a string (single non-NA character string)", __VA_ARGS__);}
 
+
+#define CHECK_IS_INT(...) \
+  if (!is_inty(REACTOR_FIRST(__VA_ARGS__)) || is_annoying(REACTOR_FIRST(__VA_ARGS__))){ \
+    REACTOR_ERRMSG("a positive integer", __VA_ARGS__);}
+
+#define CHECK_IS_NATNUM(...) \
+  if (!is_inty(REACTOR_FIRST(__VA_ARGS__)) || is_annoying(REACTOR_FIRST(__VA_ARGS__)) || is_negative(REACTOR_FIRST(__VA_ARGS__))){ \
+    REACTOR_ERRMSG("a positive integer", __VA_ARGS__);}
+
 #define CHECK_IS_POSINT(...) \
-  if (!is_num(REACTOR_FIRST(__VA_ARGS__)) || !is_inty(REACTOR_FIRST(__VA_ARGS__)) || is_annoying(REACTOR_FIRST(__VA_ARGS__))){ \
+  if (!is_inty(REACTOR_FIRST(__VA_ARGS__)) || is_annoying(REACTOR_FIRST(__VA_ARGS__)) || is_negative(REACTOR_FIRST(__VA_ARGS__)) || is_zero(REACTOR_FIRST(__VA_ARGS__))){ \
     REACTOR_ERRMSG("a positive integer", __VA_ARGS__);}
 
 
