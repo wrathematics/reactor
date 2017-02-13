@@ -6,7 +6,7 @@ Type tests for R objects in C functions.
 
 ## Installation
 
-The "library" is a single header-only C file.  Just copy `reactor.h` to your `src/` directory of your R package source .
+The "library" is a single header-only C file.  Just copy `reactor.h` to your `src/` directory of your R package source.  There is also an R version of reactor that can be used for R-only projects.
 
 
 
