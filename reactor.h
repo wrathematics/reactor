@@ -155,6 +155,10 @@ static inline int is_num(SEXP x)
 
 
 
+#define CHECK_IS_NUMERIC(...) \
+  if (!is_num(REACTOR_FIRST(__VA_ARGS__))){ \
+    REACTOR_ERRMSG("numeric", __VA_ARGS__);}
+
 #define CHECK_IS_INT(...) \
   if (!is_inty(REACTOR_FIRST(__VA_ARGS__)) || is_annoying(REACTOR_FIRST(__VA_ARGS__))){ \
     REACTOR_ERRMSG("a positive integer", __VA_ARGS__);}
